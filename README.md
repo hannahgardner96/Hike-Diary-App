@@ -10,7 +10,7 @@ A page that displays recommendations for hikes based on your current location an
 Stretch: integrate d3 to show weather trends for the past few days or future days
 
 ## Goal 2:
-An index of hiking experiences (kinda like restaurant reviews) that saves the location, weather at the time of creation, and a description of the hike.
+An index of hike memorites that saves the location, weather at the time of creation, and a description of the hike.
 * Can either click a “create new” button at the top of the screen or on the list of recommendations
     * If you click “create new” you can search a location or enter an address
     * If you click from the recommendations, it will populate the location on its own
