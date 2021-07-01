@@ -40,4 +40,5 @@ Stretch: unique logins, upload photos from hike
 - [Getting start with Django](https://www.djangoproject.com/start/)
 - [Django app tutotial](https://docs.djangoproject.com/en/3.2/intro/tutorial01/)
 - [Django postSQL databse creation tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04)
+- [Build ToDo App: React Django Tutorial](https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react)
 - Learning React, Edition 2 by Alex Banks & Eve Porcello

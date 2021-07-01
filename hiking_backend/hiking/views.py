@@ -1,4 +1,17 @@
 from django.http import HttpResponse
+from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import HikeLocationSerializer, HikeRecommendationSerializer, DiaryEntrySerializer
+from .models import HikeLocation, HikeRecommendation, DiaryEntry
 
-def index(request):
-    return HttpResponse("Hello to hiking app")
+class HikeLocationView(viewsets.ModelViewSet):
+    serializer_class = HikeLocationSerializer
+    queryset = HikeLocation.objects.all()
+
+class HikeRecommendationView(viewsets.ModelViewSet):
+    serializer_class = HikeRecommendationSerializer
+    queryset =  HikeRecommendation.objects.all()
+
+class DiaryEntryView(viewsets.ModelViewSet):
+    serializer_class = DiaryEntrySerializer
+    queryset = DiaryEntry.objects.all()

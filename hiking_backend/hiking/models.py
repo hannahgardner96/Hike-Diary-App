@@ -4,12 +4,12 @@ from datetime import date
 class HikeLocation(models.Model):
     hike_name = models.CharField(max_length = 100)
     hike_address = models.CharField(max_length = 100)
-    hike_lat = models.DecimalField(max_digits=20, decimal_places=20)
-    hike_lng = models.DecimalField(max_digits=20, decimal_places=20)
+    hike_lat = models.FloatField()
+    hike_lng = models.FloatField()
+    hike_img = models.CharField(max_length = 1000, null=True)
 
 class HikeRecommendation(models.Model):
     hike_location = models.ForeignKey(HikeLocation, on_delete = models.CASCADE)
-    hike_img = models.CharField(max_length = 200)
     weather_rating = models.IntegerField()
 
 class DiaryEntry(models.Model):
