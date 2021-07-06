@@ -1,6 +1,4 @@
 # Python stuff
-cd ..
-pip install -r requirements.txt 
 cd hiking_backend
 python3 manage.py makemigrations
 python3 manage.py migrate
