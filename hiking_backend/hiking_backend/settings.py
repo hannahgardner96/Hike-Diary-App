@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-s7jr1_air%(a%wc%h6rp(bo%@pgft77mnveb1@5*p&16x5+n)e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hike-diary-backend.herokuapp.com']
+ALLOWED_HOSTS = ['hike-diary-backend.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -134,8 +134,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.abspath('./static/')
-STATIC_URL = '/static/'
+STATIC_URL = '/django_static/'
+STATICFILES_DIRS = [os.path.abspath('./hiking_backend/hiking_backend/static/')]
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
