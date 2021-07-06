@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.contrib.staticfiles.views import serve
+from django.urls import include, path, re_path
 from rest_framework import routers
 from hiking import views
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 router = routers.DefaultRouter()
 router.register(r'hike_location', views.HikeLocationView)
@@ -27,6 +27,5 @@ router.register(r'diary_entry', views.DiaryEntryView)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    re_path(r'^(?P<path>.*)$', serve)
 ]
-
-urlpatterns += staticfiles_urlpatterns()
