@@ -136,6 +136,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.abspath('./static/')
 STATIC_URL = '/'
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
