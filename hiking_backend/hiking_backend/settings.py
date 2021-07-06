@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-s7jr1_air%(a%wc%h6rp(bo%@pgft77mnveb1@5*p&16x5+n)e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hike-diary-backend.herokuapp.com']
 
 
 # Application definition
