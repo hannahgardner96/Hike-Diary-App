@@ -14,6 +14,10 @@ from pathlib import Path
 
 import psycopg2.extensions
 
+import os
+
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -80,7 +84,7 @@ WSGI_APPLICATION = 'hiking_backend.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True) if 'DATABASE_URL' in os.environ else {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'hiking',
         'USER': 'hiking_user',
@@ -130,7 +134,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.abspath('./static/')
+STATIC_URL = '/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
