@@ -37,12 +37,12 @@ SECRET_KEY = 'django-insecure-s7jr1_air%(a%wc%h6rp(bo%@pgft77mnveb1@5*p&16x5+n)e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://hike-diary-backend.herokuapp.com', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://localhost:8000', 'localhost', 'hike-diary-backend.herokuapp.com']
+ALLOWED_HOSTS = ['http://hike-diary-backend.herokuapp.com', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://localhost:8000', 'localhost', 'hike-diary-backend.herokuapp.com', '127.0.0.1']
 
 CORS_ALLOWED_ORIGINS_REGEXES = [
     'https?://hike-diary-backend.herokuapp.com',
     'https?://127.0.0.1:3000',
-    'https?://localhost:3000',
+    'https?://localhost:[38]000',
     'hike-diary-backend.herokuapp.com'
 ]
 
@@ -152,9 +152,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.abspath('./hiking_backend/hiking_backend/static/')
+_STATIC_ROOT = os.path.join(BASE_DIR, "hiking_backend/static/")
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(STATIC_ROOT, "static/")]
+STATICFILES_DIRS = [_STATIC_ROOT, os.path.join(_STATIC_ROOT, "static/")]
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 

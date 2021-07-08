@@ -28,5 +28,6 @@ router.register(r'diary_entry', views.DiaryEntryView)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('', views.redirect_index),
     re_path(r'^(?P<path>.*)$', serve)
 ]

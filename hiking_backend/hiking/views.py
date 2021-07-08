@@ -1,5 +1,4 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect
 from rest_framework import viewsets
 from .serializers import HikeLocationSerializer, HikeRecommendationSerializer, DiaryEntrySerializer
 from .models import HikeLocation, HikeRecommendation, DiaryEntry
@@ -15,3 +14,5 @@ class HikeRecommendationView(viewsets.ModelViewSet):
 class DiaryEntryView(viewsets.ModelViewSet):
     serializer_class = DiaryEntrySerializer
     queryset = DiaryEntry.objects.all()
+
+redirect_index = lambda _r: redirect("/index.html")
