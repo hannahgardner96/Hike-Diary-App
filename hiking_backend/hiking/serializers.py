@@ -4,7 +4,7 @@ from .models import HikeLocation, HikeRecommendation, DiaryEntry
 class HikeLocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = HikeLocation
-        fields = ('hike_name', 'hike_address', 'hike_lat', 'hike_lng', 'hike_img')
+        fields = ('address', 'geolocation')
 
 class HikeRecommendationSerializer(serializers.ModelSerializer):
     class Meta: 
