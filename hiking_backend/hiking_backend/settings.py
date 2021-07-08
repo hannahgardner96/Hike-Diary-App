@@ -37,18 +37,20 @@ SECRET_KEY = 'django-insecure-s7jr1_air%(a%wc%h6rp(bo%@pgft77mnveb1@5*p&16x5+n)e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://hike-diary-backend.herokuapp.com', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://localhost:8000', 'localhost']
+ALLOWED_HOSTS = ['http://hike-diary-backend.herokuapp.com', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://localhost:8000', 'localhost', 'hike-diary-backend.herokuapp.com']
 
 CORS_ALLOWED_ORIGINS_REGEXES = [
     'https?://hike-diary-backend.herokuapp.com',
     'https?://127.0.0.1:3000',
-    'https?://localhost:3000'
+    'https?://localhost:3000',
+    'hike-diary-backend.herokuapp.com'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
+    'hike-diary-backend.herokuapp.com'
 )
 # Application definition
 
