@@ -3,10 +3,10 @@ import {IndivHikeInScroll} from "./IndivHikeInScroll"
 
 export const MyHikesScroll = () => {
     return (
-        <>
-            <h1>My Hikes Scroll</h1>
+        <div className = "entries-scroll">
+            <h4>My Hikes Scroll</h4>
             <IndivHikeInScroll />
             <NewEntryButton />
-        </>
+        </div>
     )
 }

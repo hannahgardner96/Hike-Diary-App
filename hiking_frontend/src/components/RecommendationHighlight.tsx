@@ -4,11 +4,13 @@ import {NewEntryButton} from "./NewEntryButton"
 
 export const RecommendationHighlight = () => {
     return (
-        <>
-            <h1>Recommendation Highlight</h1>
-            <NewEntryButton />
+        <div className = "recommendation-highlight">
+            <div className = "title-and-button">
+                <h4>Recommendation Highlight</h4>
+                <NewEntryButton />
+            </div>
             <MapAPIDisplay />
             <WeatherDisplay />
-        </>
+        </div>
     )
 }

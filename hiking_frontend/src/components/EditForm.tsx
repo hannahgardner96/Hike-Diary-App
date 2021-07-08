@@ -1,7 +1,8 @@
 export const EditForm = () => {
     return (
         <>
-            <h1>Edit My Hike</h1>
+            <h4>Edit My Hike</h4>
+            <button>Edit</button>
         </>
     )
 }

@@ -3,10 +3,9 @@ import {ImageSquare} from "./ImageSquare"
 
 export const MapAPIDisplay = () => {
     return (
-        <>
-            <h1>Map Display</h1>
+        <div className = "map-display">
             <MapSquare />
             <ImageSquare />
-        </>
+        </div>
     )
 }

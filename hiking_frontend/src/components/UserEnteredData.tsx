@@ -1,7 +1,7 @@
 export const UserEnteredData = () => {
     return (
         <>
-            <h1>User Data: Location, Date, Description</h1>
+            <h6>User Data: Location, Date, Description</h6>
         </>
     )
 }

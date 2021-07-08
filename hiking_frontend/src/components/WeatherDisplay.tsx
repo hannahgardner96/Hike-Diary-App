@@ -1,5 +1,5 @@
 export const WeatherDisplay = () => {
     return (
-        <h1>Weather Display</h1>
+        <h4>Weather Display</h4>
     )
 }

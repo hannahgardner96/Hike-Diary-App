@@ -1,12 +1,20 @@
+import { FunctionComponent } from "react"
 import {RecommendationHighlight} from "./RecommendationHighlight"
 import {RecommendationScroll} from "./RecommendationScroll"
+import { HikeLocation } from "./types"
 
-export const RecommendationsMain = () => {
+interface RecommendationsMainProps {
+    locations: HikeLocation[];
+}
+
+export const RecommendationsMain: FunctionComponent<RecommendationsMainProps> = ({locations}) => {
     return (
-        <>
+        <div className = "recommendations-main">
             <h1>My Recommendations</h1>
-            <RecommendationHighlight />
-            <RecommendationScroll />
-        </>
+            <div className = "recommendations-panels">
+                <RecommendationHighlight />
+                <RecommendationScroll locations = {locations} />
+            </div>
+        </div>
     )
 }

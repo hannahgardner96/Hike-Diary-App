@@ -8,14 +8,14 @@ import {EditForm} from "./EditForm"
 
 export const MyHikeHighlight = () => {
     return (
-        <>
-            <h1>My Hike Highlight</h1>
+        <div className = "entry-highlight">
+            <h4>My Hike Highlight</h4>
             <UserEnteredData />
             <MapAPIDisplay />
             <WeatherDisplay />
             <ScrollToButton />
             <EditForm />
             <NewForm />
-        </>
+        </div>
     )
 }

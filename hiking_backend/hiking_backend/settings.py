@@ -18,6 +18,12 @@ import os
 
 import dj_database_url
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+GOOGLE_MAPS_API_KEY = os.environ["GOOGLE_MAPS_API_KEY"]
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,9 +37,19 @@ SECRET_KEY = 'django-insecure-s7jr1_air%(a%wc%h6rp(bo%@pgft77mnveb1@5*p&16x5+n)e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hike-diary-backend.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['http://hike-diary-backend.herokuapp.com', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://localhost:8000', 'localhost']
 
+CORS_ALLOWED_ORIGINS_REGEXES = [
+    'https?://hike-diary-backend.herokuapp.com',
+    'https?://127.0.0.1:3000',
+    'https?://localhost:3000'
+]
 
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+)
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,14 +65,14 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'hiking_backend.urls'
@@ -134,8 +150,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/django_static/'
-STATICFILES_DIRS = [os.path.abspath('./hiking_backend/hiking_backend/static/')]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.abspath('./hiking_backend/hiking_backend/static/'), 
+    os.path.abspath('./hiking_backend/hiking_backend/static/static/')
+]
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
