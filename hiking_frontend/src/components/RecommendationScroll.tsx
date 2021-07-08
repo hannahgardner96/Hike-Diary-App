@@ -12,9 +12,10 @@ export const RecommendationScroll: FunctionComponent<RecommendationsScrollProps>
         <div className = "recommendations-scroll">
             <h4>Recommendation Scroll</h4>
             {
-                locations.map((location, index) => {
+                locations.length > 0 ? locations.map((location, index) => {
                     return <IndivRecInScroll location = {location} key = {index} />
                 })
+                : <h6>Search a Location to See Recommendations.</h6>
             }
             <ScrollToButton />
         </div>

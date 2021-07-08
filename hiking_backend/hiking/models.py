@@ -1,12 +1,12 @@
 from django.db import models
 from datetime import date
-from django.contrib import admin
-from django_google_maps import widgets as map_widgets
-from django_google_maps import fields as map_fields
 
 class HikeLocation(models.Model):
-    address = map_fields.AddressField(max_length = 200)
-    geolocation = map_fields.GeoLocationField(max_length=100, null=True)
+    hike_name = models.CharField(max_length = 100, null=True)
+    hike_address = models.CharField(max_length = 100, null=True)
+    hike_lat = models.FloatField(null=True)
+    hike_lng = models.FloatField(null=True)
+    hike_img = models.CharField(max_length = 1000, null=True)
 
 class HikeRecommendation(models.Model):
     hike_location = models.ForeignKey(HikeLocation, on_delete = models.CASCADE)

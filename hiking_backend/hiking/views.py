@@ -2,6 +2,9 @@ from django.shortcuts import redirect
 from rest_framework import viewsets
 from .serializers import HikeLocationSerializer, HikeRecommendationSerializer, DiaryEntrySerializer
 from .models import HikeLocation, HikeRecommendation, DiaryEntry
+import requests
+from django.conf import settings
+from django.http import HttpResponse
 
 class HikeLocationView(viewsets.ModelViewSet):
     serializer_class = HikeLocationSerializer
@@ -14,5 +17,12 @@ class HikeRecommendationView(viewsets.ModelViewSet):
 class DiaryEntryView(viewsets.ModelViewSet):
     serializer_class = DiaryEntrySerializer
     queryset = DiaryEntry.objects.all()
+
+
+
+def get_location(request):
+    location_object = requests.get(f"https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&keyword=hikes&key={settings.GOOGLE_MAPS_API_KEY}&fields=name,geometry,formatted_address,photos&input={request.GET['location_string']}")
+    return HttpResponse(location_object)
+
 
 redirect_index = lambda _r: redirect("/index.html")
