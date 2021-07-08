@@ -20,7 +20,7 @@ export const App = () => {
   return (
     <>
       <RecommendationsMain locations = {locations} setLocations = {setLocations} />
-      <DiaryEntriesMain />
+      <DiaryEntriesMain locations = {locations} setLocations = {setLocations}/>
     </>
   )
 }

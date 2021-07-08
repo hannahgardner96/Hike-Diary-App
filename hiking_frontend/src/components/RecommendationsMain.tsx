@@ -15,7 +15,7 @@ export const RecommendationsMain: FunctionComponent<RecommendationsMainProps> = 
             <h1>My Recommendations</h1>
             <LocationSearch locations = {locations} setLocations = {setLocations} />
             <div className = "recommendations-panels">
-                <RecommendationHighlight />
+                <RecommendationHighlight locations = {locations} />
                 <RecommendationScroll locations = {locations} />
             </div>
         </div>

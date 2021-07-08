@@ -1,16 +1,34 @@
 import {MapAPIDisplay} from "./MapAPIDisplay"
 import {WeatherDisplay} from "./WeatherDisplay"
 import {NewEntryButton} from "./NewEntryButton"
+import { HikeLocation } from "./types"
+import { FunctionComponent, useEffect, useState } from "react"
 
-export const RecommendationHighlight = () => {
+interface RecommendationHighlightProps {
+    locations: HikeLocation[];
+}
+
+export const RecommendationHighlight: FunctionComponent<RecommendationHighlightProps> = ({locations}) => {
+    // STATE //
+    const [displayedLocation, setDisplayedLocation] = useState(locations[0])
+
+    // HOOKS //
+    useEffect(() => {
+        setDisplayedLocation(locations[locations.length-1])
+    }, [locations])
+
     return (
         <div className = "recommendation-highlight">
             <div className = "title-and-button">
-                <h4>Recommendation Highlight</h4>
+                {
+                    displayedLocation ? <h4>{displayedLocation.hike_name}</h4>
+                    : <h4>Search for a hike to see a highlight.</h4>
+                }
+                
                 <NewEntryButton />
             </div>
-            <MapAPIDisplay />
-            <WeatherDisplay />
+            <MapAPIDisplay location = {displayedLocation}/>
+            {/* <WeatherDisplay /> */}
         </div>
     )
 }

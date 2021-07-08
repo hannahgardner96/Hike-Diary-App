@@ -29,6 +29,7 @@ router.register(r'diary_entry', views.DiaryEntryView)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/location_search', views.get_location),
+    path('api/photo_search', views.get_photo),
     path('api/', include(router.urls)),
     path('', views.redirect_index),
     re_path(r'^(?P<path>.*)$', serve)

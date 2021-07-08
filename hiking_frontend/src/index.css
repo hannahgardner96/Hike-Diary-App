@@ -24,6 +24,7 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   text-align: start;
+  width: 60%;
   padding: 5%;
 }
 .title-and-button {
@@ -37,6 +38,7 @@ body {
   justify-content: flex-start;
   align-items: flex-end;
   text-align: end;
+  width: 30%;
   padding: 5%;
 }
 .indiv-rec-title {
@@ -51,6 +53,8 @@ body {
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
+  width: 100%;
+  border: black 1px solid;
 }
 
 /* === DIARY ENTRIES MAIN === */
