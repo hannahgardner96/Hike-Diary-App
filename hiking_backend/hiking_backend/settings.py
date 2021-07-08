@@ -154,10 +154,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.abspath('./hiking_backend/hiking_backend/static/')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    STATIC_ROOT, 
-    os.path.join(STATIC_ROOT, "static/")
-]
+STATICFILES_DIRS = [os.path.join(STATIC_ROOT, "static/")]
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 
