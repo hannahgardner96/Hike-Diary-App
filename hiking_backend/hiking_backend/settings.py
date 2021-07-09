@@ -152,9 +152,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-_STATIC_ROOT = os.path.join(BASE_DIR, "hiking_backend/static/")
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+WEBPACK_STATIC_ROOT = os.path.join(BASE_DIR, "hiking_backend/static/")
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [_STATIC_ROOT, os.path.join(_STATIC_ROOT, "static/")]
+STATICFILES_DIRS = [WEBPACK_STATIC_ROOT, os.path.join(WEBPACK_STATIC_ROOT, "static/")]
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 
