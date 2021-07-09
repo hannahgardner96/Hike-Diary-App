@@ -22,7 +22,7 @@ export const RecommendationHighlight: FunctionComponent<RecommendationHighlightP
             <div className = "title-and-button">
                 {
                     displayedLocation ? <h4>{displayedLocation.hike_name}</h4>
-                    : <h4>Search for a hike to see a highlight.</h4>
+                    : <h4>Search a Location to See a Recommendation.</h4>
                 }
                 
                 <NewEntryButton />

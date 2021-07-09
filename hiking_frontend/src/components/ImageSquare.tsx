@@ -12,29 +12,30 @@ let baseURL = "http://localhost:8000/api"
 interface imageSearchProps {
     img: string
 }
+// FUNCTION //
+
+    const searchImg = async (img) => {
+        const url = `${baseURL}/photo_search?maxwidth=25&maxheight=25&photo_ref=${encodeURIComponent(img)}`
+        const response = await fetch(url)
+        const searchURL = await response.blob()
+        return URL.createObjectURL(searchURL)
+    }
 
 export const ImageSquare: FunctionComponent<imageSearchProps> = ({img}) => {
     // STATE //
     // const [photoRef] = useState(img)
     const [photoURL, setPhotoURL] = useState("")
 
-    // API REQ //
+    
+
+    // HOOKS //
     useEffect(() => {
-        const url = `${baseURL}/photo_search?photo_ref=${encodeURIComponent(img)}`
-        fetch(url)
-            .then(data => {
-                return data.blob()!
-            }, error => error)
-            .then(binaryData => {
-                // convert to Base64
-                const base64Data = btoa(binaryData);
-                setPhotoURL(`data:image/png;base64,${base64Data}`)
-            }, error => {
-                console.log(error)
-            })
+        searchImg(img).then(setPhotoURL)
     }, [img])
 
     return (
-        <img src = {photoURL} />
+        <img className = "rec-image" src = {photoURL} alt = "hike recommendation" />
     )
 }
+
+// https://codeburst.io/adding-city-images-to-your-react-app-14c937df2db2 referenced this to structure concerseion from binary to readable data

@@ -57,6 +57,16 @@ body {
   border: black 1px solid;
 }
 
+.rec-image, .map-container {
+  width: 18vh;
+  height: 18vh;
+  padding: 2vh;
+}
+
+.rec-image {
+  padding-left: 0;
+}
+
 /* === DIARY ENTRIES MAIN === */
 .entries-main {
   display: inline-flex;
