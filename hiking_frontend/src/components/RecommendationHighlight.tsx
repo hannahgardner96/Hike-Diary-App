@@ -6,29 +6,23 @@ import { FunctionComponent, useEffect, useState } from "react"
 
 interface RecommendationHighlightProps {
     locations: HikeLocation[];
+    displayedLocation: HikeLocation;
 }
 
-export const RecommendationHighlight: FunctionComponent<RecommendationHighlightProps> = ({locations}) => {
-    // STATE //
-    const [displayedLocation, setDisplayedLocation] = useState(locations[0])
-
-    // HOOKS //
-    useEffect(() => {
-        setDisplayedLocation(locations[locations.length-1])
-    }, [locations])
+export const RecommendationHighlight: FunctionComponent<RecommendationHighlightProps> = ({locations, displayedLocation}) => {
 
     return (
         <div className = "recommendation-highlight">
             <div className = "title-and-button">
                 {
-                    displayedLocation ? <h4>{displayedLocation.hike_name}</h4>
-                    : <h4>Search a Location to See a Recommendation.</h4>
+                    displayedLocation ? <h5 className = "highlight-title">{displayedLocation.hike_name}</h5>
+                    : <h5 className = "highlight-title">Search a Location to See a Recommendation.</h5>
                 }
                 
                 <NewEntryButton />
             </div>
             <MapAPIDisplay location = {displayedLocation}/>
-            {/* <WeatherDisplay /> */}
+            <WeatherDisplay lat = {displayedLocation.hike_lat} lng = {displayedLocation.hike_lng} />
         </div>
     )
 }

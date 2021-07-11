@@ -3,24 +3,23 @@ import {DiaryEntriesMain} from "./components/DiaryEntriesMain"
 import {RecommendationsMain} from "./components/RecommendationsMain"
 import { HikeLocation } from "./components/types"
 
-// const baseURL = "http://localhost:8000/api"
+const barcelona: HikeLocation = {
+  hike_name: "Barcelona",
+  hike_address: "Barcelona, Spain",
+  hike_lat: 41.3851,
+  hike_lng: 2.1734,
+  hike_img: undefined,
+}
 
 export const App = () => {
   // STATE //
   const [locations, setLocations] = useState<HikeLocation[]>([])
-  
-  // HOOKS //
-  // useEffect(() => {
-  //   fetch(`${baseURL}/hike_location/`)
-  //     .then(data => {return data.json()}, error => console.log(error))
-  //     .then(parsedData => setLocations(parsedData), error => console.log(error))
-  // }, [])
+  const [displayedLocation, setDisplayedLocation] = useState(barcelona)
 
-  // RETURN //
   return (
     <>
-      <RecommendationsMain locations = {locations} setLocations = {setLocations} />
-      <DiaryEntriesMain locations = {locations} setLocations = {setLocations}/>
+      <RecommendationsMain  displayedLocation = {displayedLocation} setDisplayedLocation = {setDisplayedLocation} locations = {locations} setLocations = {setLocations}/>
+      <DiaryEntriesMain displayedLocation = {displayedLocation} setDisplayedLocation = {setDisplayedLocation} locations = {locations} setLocations = {setLocations}/>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import {MapContainer} from "./MapContainer"
-import {ImageSquare} from "./ImageSquare"
+// import {ImageSquare} from "./ImageSquare"
 import { HikeLocation } from "./types"
 import { FunctionComponent } from "react"
 
@@ -15,12 +15,12 @@ export const MapAPIDisplay: FunctionComponent<MapAPIDisplayProps> = ({location})
             {
                 location ? (
                 <> 
-                    <MapContainer lat = {location.hike_lat} lng = {location.hike_lng}/>
-                    <ImageSquare img = {location.hike_img} /> 
+                    <MapContainer lat = {location.hike_lat} lng = {location.hike_lng} name = {location.hike_name} address = {location.hike_address} />
+                    {/* <ImageSquare img = {location.hike_img} />  */}
                 </>) : (
                 <>
-                    <MapContainer lat = {41.3851} lng = {2.1734}/> 
-                    <ImageSquare img = {defaultImg} />
+                    <MapContainer lat = {41.3851} lng = {2.1734} name = "Barcelona, Spain" address = "Barcelona," /> 
+                    {/* <ImageSquare img = {defaultImg} /> */}
                 </>)
             }
             

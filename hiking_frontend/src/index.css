@@ -1,17 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Open+Sans+Condensed:wght@300&display=swap');
+
+html {
+  background-image: url("https://i.pinimg.com/originals/5f/0c/a5/5f0ca5b2f2c0c999830c76af45ea9ff4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: #6499AD; */
+}
+
 body {
-  margin: 5%;
+  margin: 3%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 /* ===  RECOMMENDATIONS MAIN === */
 .recommendations-main {
   display: inline-flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   text-align: center;
-  width: 95%;
-  border: 1px solid black;
+  width: 90%;
+  /* border: 1px solid white; */
   margin: 1%;
   padding: 1%;
+  height: 85vh;
+  background-image: url("https://api.timeforkids.com/wp-content/uploads/2019/09/final-cover-forest.jpg");
+}
+.rec-main-title {
+  margin-bottom:0;
+  font-family: 'Fredericka the Great', cursive;
+  color: white
+}
+.cute-quote {
+  font-size: small;
+}
+.location-search {
+  margin-bottom: 0;
+  display: inline-flex;
+  flex-direction: row;
+}
+.search-btn {
+  background: white;
+}
+input {
+  margin-bottom: 0;
+  margin: 1%;
+  border: 1px solid white;
+  background: white;
 }
 .recommendations-panels {
   display: inline-flex;
@@ -24,13 +64,22 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   text-align: start;
-  width: 60%;
-  padding: 5%;
+  width: 45%;
+  margin: 2%;
+  padding: 1%;
+  padding-right: 0;
+  /* background-image: url("./media/hlbckgrnd3.png"); */
+  background-color: rgba(255, 255, 255, 0.5);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 }
 .title-and-button {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  align-items: baseline;
+  width: 100%;
 }
 .recommendations-scroll {
   display: inline-flex;
@@ -38,8 +87,21 @@ body {
   justify-content: flex-start;
   align-items: flex-end;
   text-align: end;
-  width: 30%;
-  padding: 5%;
+  width: 45%;
+  height: 65vh;
+  padding: 1%;
+  padding-left: 0;
+  margin: 2%;
+  background-image: url("./media/scrollbckgrnd3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border: 1px solid white; */
+  color: white;
+}
+.titles-in-scroll {
+  margin: 5%;
+  margin-right: 0;
+  overflow-y: scroll;
 }
 .indiv-rec-title {
   padding-right: 6%;
@@ -48,35 +110,51 @@ body {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: flex-end;
+  cursor: pointer;
+  border: white 1px solid;
+  width: 90%;
+  padding: 2%;
+  margin: 1%;
+}
+.new-button {
+  margin: 4%;
+  border: white solid 1px;
 }
 .map-display {
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
-  border: black 1px solid;
+  width: 80%;
+  border: white 1px solid;
 }
 
-.rec-image, .map-container {
-  width: 18vh;
-  height: 18vh;
+/* .rec-image,*/ .map-container {
+  /*width: 18vh;
+  height: 18vh;*/
   padding: 2vh;
-}
+} 
 
-.rec-image {
+/* .rec-image {
   padding-left: 0;
-}
+} */
 
 /* === DIARY ENTRIES MAIN === */
+.my-hikes-title {
+  font-family: 'Fredericka the Great', cursive;
+  color: white
+}
 .entries-main {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  width: 95%;
-  border: 1px solid black;
+  width: 90%;
+  /* border: 1px solid black; */
   margin: 1%;
   padding: 1%;
+  background-image: url("https://api.timeforkids.com/wp-content/uploads/2019/09/final-cover-forest.jpg");
 }
 .entries-panels {
   display: inline-flex;
@@ -89,7 +167,15 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   text-align: start;
-  padding: 5%;
+  width: 45%;
+  margin: 2%;
+  padding: 1%;
+  padding-right: 0;
+  /* background-image: url("./media/hlbckgrnd3.png"); */
+  background-color: rgba(255, 255, 255, 0.5);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 }
 .entries-scroll {
   display: inline-flex;
@@ -97,5 +183,14 @@ body {
   justify-content: flex-start;
   align-items: flex-end;
   text-align: end;
-  padding: 5%;
+  width: 45%;
+  height: 65vh;
+  padding: 1%;
+  padding-left: 0;
+  margin: 2%;
+  background-image: url("./media/scrollbckgrnd3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border: 1px solid white; */
+  color: white;
 }

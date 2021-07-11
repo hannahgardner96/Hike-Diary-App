@@ -24,8 +24,12 @@ def get_location(request):
     location_object = requests.get(f"https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&keyword=hikes&key={settings.GOOGLE_MAPS_API_KEY}&fields=name,geometry,formatted_address,photos&input={request.GET['location_string']}")
     return HttpResponse(location_object)
 
+def get_nearby_locations(request):
+    nearby_locations = requests.get(f"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={request.GET['lat']},{request.GET['lng']}&radius=5000&keyword=hike&key={settings.GOOGLE_MAPS_API_KEY}")
+    return HttpResponse(nearby_locations)
+
 def get_photo(request):
-    photo_object = requests.get(f"https://maps.googleapis.com/maps/api/place/photo?photoreference=${request.GET['photo_ref']}&key=${settings.GOOGLE_MAPS_API_KEY}")
+    photo_object = requests.get(f"https://maps.googleapis.com/maps/api/place/photo?photoreference=${request.GET['photo_ref']}&key=${settings.GOOGLE_MAPS_API_KEY}`")
     return HttpResponse(photo_object)
 
 

@@ -1,5 +1,5 @@
 export const NewEntryButton = () => {
     return (
-        <button>New</button>
+        <button className = "new-button" >New</button>
     )
 }
