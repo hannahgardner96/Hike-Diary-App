@@ -1,4 +1,4 @@
-import { NewEntryButton } from "./NewEntryButton"
+// import { NewEntryButton } from "./NewEntryButton"
 import {IndivHikeInScroll} from "./IndivHikeInScroll"
 
 export const MyHikesScroll = () => {
@@ -6,7 +6,7 @@ export const MyHikesScroll = () => {
         <div className = "entries-scroll">
             <h4>My Hikes Scroll</h4>
             <IndivHikeInScroll />
-            <NewEntryButton />
+            {/* <NewEntryButton /> */}
         </div>
     )
 }

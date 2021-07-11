@@ -3,7 +3,7 @@ import {RecommendationHighlight} from "./RecommendationHighlight"
 import {RecommendationScroll} from "./RecommendationScroll"
 import { HikeLocation } from "./types"
 import {LocationSearch} from "./LocationSearch"
-// import { ScrollToButton } from "./ScrollToButton"
+import { ScrollBottom } from "./ScrollBottom"
 
 interface RecommendationsMainProps {
     locations: HikeLocation[];
@@ -30,7 +30,7 @@ export const RecommendationsMain: FunctionComponent<RecommendationsMainProps> = 
     }, [locations])
 
     return (
-        <div className = "recommendations-main">
+        <div className = "recommendations-main" id = "recommendations-main-elem">
             <h3 className = "rec-main-title" >Where should I hike?</h3>
             {/* <p className = "cute-quote">“And into the forest I go, to lose my mind and find my soul.” — John Muir</p> */}
             <LocationSearch locations = {locations} setLocations = {setLocations} />
@@ -38,7 +38,7 @@ export const RecommendationsMain: FunctionComponent<RecommendationsMainProps> = 
                 <RecommendationHighlight locations = {locations} displayedLocation = {displayedLocation} />
                 <RecommendationScroll locations = {locations} setDisplayedLocation = {setDisplayedLocation} />
             </div>
-            {/* <ScrollToButton /> */}
+            <ScrollBottom />
         </div>
     )
 }

@@ -88,7 +88,7 @@ input {
   align-items: flex-end;
   text-align: end;
   width: 45%;
-  height: 65vh;
+  height: 60vh;
   padding: 1%;
   padding-left: 0;
   margin: 2%;
@@ -103,14 +103,19 @@ input {
   margin-right: 0;
   overflow-y: scroll;
 }
+.titles-in-scroll::-webkit-scrollbar-track {
+  background-color: pink;
+  /* rgba(255, 255, 255, 0.5); */
+}
 .indiv-rec-title {
   padding-right: 6%;
+  margin: 2%;
 }
 .rec-and-new {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  align-items: baseline;
+  align-items:center;
   justify-content: flex-end;
   cursor: pointer;
   border: white 1px solid;
@@ -119,7 +124,7 @@ input {
   margin: 1%;
 }
 .new-button {
-  margin: 4%;
+  margin: 2%;
   border: white solid 1px;
 }
 .map-display {
@@ -168,6 +173,7 @@ input {
   align-items: flex-start;
   text-align: start;
   width: 45%;
+  /* height: 80%; */
   margin: 2%;
   padding: 1%;
   padding-right: 0;
@@ -177,6 +183,24 @@ input {
   background-size: cover;
   color: white;
 }
+.edit-title-and-button {
+  display: inline-flex;
+  align-items: baseline;
+  width: 100%;
+}
+.highlight-button, .new-form-title {
+  margin: 2%;
+}
+.display-highlight {
+  display: inline-flex;
+  flex-direction: column;
+}
+.display-new {
+  display: none;
+}
+.display-edit {
+  display: none;
+}
 .entries-scroll {
   display: inline-flex;
   flex-direction: column;
@@ -184,7 +208,7 @@ input {
   align-items: flex-end;
   text-align: end;
   width: 45%;
-  height: 65vh;
+  height: 60vh;
   padding: 1%;
   padding-left: 0;
   margin: 2%;
