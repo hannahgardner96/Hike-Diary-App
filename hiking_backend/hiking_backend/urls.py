@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/get_nearby_locations', views.get_nearby_locations),
     path('api/photo_search', views.get_photo),
     path('api/', include(router.urls)),
+    # path('api/diary_entry'), needs to be a path that relates to a put function
     path('', views.redirect_index),
     re_path(r'^(?P<path>.*)$', serve)
 ]

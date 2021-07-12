@@ -22,7 +22,7 @@ interface RecommendationsMainProps {
 
 export const RecommendationsMain: FunctionComponent<RecommendationsMainProps> = ({locations, setLocations, displayedLocation, setDisplayedLocation}) => {
     // STATE //
-    // const [displayedLocation, setDisplayedLocation] = useState(barcelona)
+    const [nearbyLocation, setNearbyLocation] = useState("Barcelona, Spain")
 
     // HOOKS //
     useEffect(() => {
@@ -33,10 +33,10 @@ export const RecommendationsMain: FunctionComponent<RecommendationsMainProps> = 
         <div className = "recommendations-main" id = "recommendations-main-elem">
             <h3 className = "rec-main-title" >Where should I hike?</h3>
             {/* <p className = "cute-quote">“And into the forest I go, to lose my mind and find my soul.” — John Muir</p> */}
-            <LocationSearch locations = {locations} setLocations = {setLocations} />
+            <LocationSearch locations = {locations} setLocations = {setLocations} setNearbyLocation = {setNearbyLocation} />
             <div className = "recommendations-panels">
                 <RecommendationHighlight locations = {locations} displayedLocation = {displayedLocation} />
-                <RecommendationScroll locations = {locations} setDisplayedLocation = {setDisplayedLocation} />
+                <RecommendationScroll locations = {locations} setDisplayedLocation = {setDisplayedLocation} nearbyLocation = {nearbyLocation} />
             </div>
             <ScrollBottom />
         </div>

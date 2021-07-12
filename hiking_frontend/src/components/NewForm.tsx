@@ -1,19 +1,60 @@
+import { useState } from "react"
 import { ViewHighlightButton } from "./ViewHighlightButton"
 
-export const NewForm = () => {
+let baseURL = "http://localhost:8000/api"
+
+// if (process.env.NODE_ENV === 'development') {
+//     baseURL = 'http://localhost:3003';
+// } else {
+//     // "https://morning-river-69185.herokuapp.com/" in this case is the *API* url
+//     baseURL = 'https://morning-river-69185.herokuapp.com';
+// }
+
+export const NewForm = ({getEntries}) => {
+    // STATE //
+    const [hikeName, setHikeName] = useState("")
+    const [hikeAddress, setHikeAddress] = useState("")
+    const [hikeDate, setHikeDate] = useState("")
+    const [hikeDescription, setHikeDescription] = useState("")
+
+    // API REQ //
+    const addHike = (e) => {
+        e.preventDefault()
+        let hikeToAdd = {
+            hike_name: hikeName,
+            hike_address: hikeAddress,
+            hike_date: hikeDate,
+            hike_description: hikeDescription
+        }
+        fetch(`${baseURL}/diary_entry/`, {
+            method: "POST",
+            body: JSON.stringify(hikeToAdd),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(() => {
+                getEntries()
+                setHikeName("")
+                setHikeAddress("")
+                setHikeDate("")
+                setHikeDescription("")
+            })
+    }
+
     return (
         <div className = "new-entry">
             <div className = "edit-title-and-button">
-                <h4 className = "new-form-title">New Entry</h4>
+                <h4 className = "new-form-title">New Hike</h4>
                 <ViewHighlightButton />                
             </div>
-            <form>
-                <input type = "text" name = "hike_name" id = "hike_name" placeholder = "Hike Name" />
-                <input type = "text" name = "hike_address" id = "hike_address" placeholder = "Address" /> 
-                <input name = "hike_name" id = "hike_dat" type = "date" />
-                <input type = "text" name = "hike_description" id = "hike_description" placeholder = "Description" /> 
-                <label>Weather Rating</label>
-                <input type = "number" name = "hike_weather_rating" id = "hike_weather_rating" placeholder = "0-5" value = "0" />
+            <form className = "new-entry-form" onSubmit = {(e) => addHike(e)}>
+                <input className = "new-form-input" type = "text" name = "hike_name" id = "hike_name" placeholder = "Hike Name" value = {hikeName} onChange = {e => setHikeName(e.target.value)} />
+                <input className = "new-form-input" type = "text" name = "hike_address" id = "hike_address" placeholder = "Address" value = {hikeAddress} onChange = {e => setHikeAddress(e.target.value)} /> 
+                 <input className = "new-form-input" name = "hike_date" id = "hike_date" type = "date" value = {hikeDate} onChange = {e => setHikeDate(e.target.value)} />
+                <input className = "new-form-input" type = "text" name = "hike_description" id = "hike_description" placeholder = "Description" value = {hikeDescription} onChange = {e => setHikeDescription(e.target.value)} /> 
+                <input className = "new-form-input" type = "submit" value = "Add Hike" style = {{background: "white", color: "black"}} /> 
             </form>
         </div>
     )

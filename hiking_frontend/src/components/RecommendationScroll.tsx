@@ -6,12 +6,13 @@ import { HikeLocation } from "./types"
 interface RecommendationsScrollProps {
     locations: HikeLocation[];
     setDisplayedLocation: (f: HikeLocation) => void;
+    nearbyLocation: string;
 }
 
-export const RecommendationScroll: FunctionComponent<RecommendationsScrollProps> = ({locations, setDisplayedLocation}) => {
+export const RecommendationScroll: FunctionComponent<RecommendationsScrollProps> = ({locations, setDisplayedLocation, nearbyLocation}) => {
     return (
         <div className = "recommendations-scroll">
-            <h5 className = "scroll-title">Recommendation Scroll</h5>
+            <h5 className = "scroll-title">Hikes near {nearbyLocation}</h5>
             <div className = "titles-in-scroll">
                 {
                     locations.length > 0 ? locations.map((location, index) => {

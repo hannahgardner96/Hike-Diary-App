@@ -1,12 +1,16 @@
-// import { NewEntryButton } from "./NewEntryButton"
 import {IndivHikeInScroll} from "./IndivHikeInScroll"
 
-export const MyHikesScroll = () => {
+export const MyHikesScroll = ({diaryEntries, setDisplayedHike}) => {
     return (
         <div className = "entries-scroll">
-            <h4>My Hikes Scroll</h4>
-            <IndivHikeInScroll />
-            {/* <NewEntryButton /> */}
+            <h4>My Hikes</h4>
+            <div>
+                {
+                diaryEntries.map((entry, index) => {
+                    return <IndivHikeInScroll hike = {entry} key = {index} setDisplayedHike = {setDisplayedHike} />
+                })
+            }
+            </div>
         </div>
     )
 }

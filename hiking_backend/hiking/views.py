@@ -17,8 +17,8 @@ class HikeRecommendationView(viewsets.ModelViewSet):
 class DiaryEntryView(viewsets.ModelViewSet):
     serializer_class = DiaryEntrySerializer
     queryset = DiaryEntry.objects.all()
-
-
+    # def put(self, request):
+    #     entry_object = requests.put()
 
 def get_location(request):
     location_object = requests.get(f"https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&keyword=hikes&key={settings.GOOGLE_MAPS_API_KEY}&fields=name,geometry,formatted_address,photos&input={request.GET['location_string']}")

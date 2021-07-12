@@ -15,6 +15,7 @@ let baseURL = "http://localhost:8000/api"
 interface LocationSearchProps {
     locations: HikeLocation[];
     setLocations: (f: HikeLocation[]) => void;
+    setNearbyLocation: (f: string) => void;
 }
 
 interface PositionObject {
@@ -22,7 +23,7 @@ interface PositionObject {
     lng: number
 }
 
-export const LocationSearch: FunctionComponent<LocationSearchProps> = ({locations, setLocations}) => {
+export const LocationSearch: FunctionComponent<LocationSearchProps> = ({locations, setLocations, setNearbyLocation}) => {
     // STATE //
     const [locationString, setLocationString] = useState("") // string entered by user, used to make places api textquery req to get lat/lng of location of interest
     const [position, setPosition] = useState<PositionObject>({lat: 41.3851, lng: 2.1734}) // object of lat/lng obtained from textquery to make a places api nearbysearch req to obtain multiple locations
@@ -35,6 +36,7 @@ export const LocationSearch: FunctionComponent<LocationSearchProps> = ({location
 
     // API REQ //
     const getPosition = () => {
+        setNearbyLocation(locationString)
         const url = `${baseURL}/location_search?location_string=${encodeURIComponent(locationString)}`
         fetch(url)
             .then(data => {return data.json()}, error => console.log(error))
@@ -85,6 +87,7 @@ export const LocationSearch: FunctionComponent<LocationSearchProps> = ({location
     const getRecommendations = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         getPosition()
+
     }
 
     return (
@@ -94,15 +97,3 @@ export const LocationSearch: FunctionComponent<LocationSearchProps> = ({location
         </form>
     )
 }
-
-// .then(parsedData => {
-//     const newPosition: PositionObject = {
-//         hike_name: parsedData["candidates"][0]['name'],
-//         hike_address: parsedData["candidates"][0]["formatted_address"],
-//         hike_lat: Number(parsedData["candidates"][0]["geometry"]["location"]["lat"]),
-//         hike_lng: Number(parsedData["candidates"][0]["geometry"]["location"]["lng"]),
-//         hike_img: parsedData["candidates"][0]["photos"][0]["photo_reference"],
-//     }
-//     setLocations([...locations, newLocation])
-//     setLocationString("")
-// }, error => console.log(error))

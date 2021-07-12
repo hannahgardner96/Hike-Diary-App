@@ -6,33 +6,74 @@ import {NewForm} from "./NewForm"
 import {EditForm} from "./EditForm"
 import { HikeLocation } from "./types"
 import { FunctionComponent, useState } from "react"
+import { useEffect } from "react"
 
 interface MyHikeHighlightProps {
-    locations: HikeLocation[];
-    displayedLocation: HikeLocation;
+    displayedLocation: Record<string, any>;
+    getEntries: (f) => void;
+}
+interface PositionObject {
+    lat: number,
+    lng: number
 }
 
+let baseURL = "http://localhost:8000/api"
 
-export const MyHikeHighlight: FunctionComponent<MyHikeHighlightProps> = ({locations, displayedLocation}) => {
+export const MyHikeHighlight: FunctionComponent<MyHikeHighlightProps> = ({displayedLocation, getEntries}) => {
 
     // STATE //
-    // const [highlightDisplay, setHighlightDisplay] = useState("inline-flex")
-    // const [newDisplay, setNewDisplay] = useState("none")
-    // const [editDisplay, setEditDisplay] = useState("none")
+    const [latLng, setLatLng] = useState<PositionObject | null>(null)
+
+    // VARIABLES //
+    const highlightElement = document.getElementById("highlight-element")!
+    const editFormElement = document.getElementById("edit-form-element")!
+
+    // HOOKS //
+    useEffect(() => {
+        getLatLng()
+    }, [displayedLocation])
+
+    // API REQ //
+    const getLatLng = () => {
+        const url = `${baseURL}/location_search?location_string=${encodeURIComponent(displayedLocation.hike_address)}`
+        fetch(url)
+        .then(data => {return data.json()}, error => console.log(error))
+        .then(parsedData => {
+            const newPosition: PositionObject = {
+                lat: Number(parsedData["candidates"][0]["geometry"]["location"]["lat"]),
+                lng: Number(parsedData["candidates"][0]["geometry"]["location"]["lng"])
+            }
+            setLatLng(newPosition)
+        }, error => console.log(error))
+    }
+
+    // FUNCTIONS //
+    const changeDisplays = () => {
+        highlightElement.style.display = "none"
+        editFormElement.style.display = "inline-flex"
+    }
 
     return (
         <div className = "entry-highlight">
-            <div className = "display-highlight" id = "highlight-element">
-                <h4>My Hike Highlight</h4>
-                <UserEnteredData />
-                {/* <MapAPIDisplay location = {displayedLocation} /> */}
-                <WeatherDisplay lat = {displayedLocation.hike_lat} lng = {displayedLocation.hike_lng} />
-            </div>
+            {
+                    latLng ? <div className = "display-highlight" id = "highlight-element">
+                    <h4>{displayedLocation.hike_name}</h4>
+                    <button onClick = {() => {
+                        changeDisplays()
+                        console.log(displayedLocation)
+                        }}>Edit</button>
+                    <UserEnteredData hike = {displayedLocation} />
+                    {/* <MapAPIDisplay location = {displayedLocation} /> */}
+                    <WeatherDisplay lat = {latLng.lat} lng = {latLng.lng} />
+                </div>
+                : <div className = "display-highlight" id = "highlight-element">Add a hike to view a highlight.</div>
+            }
+            
             <div className = "display-new" id = "new-form-element">
-                <NewForm />
+                <NewForm getEntries = {getEntries} />
             </div>
             <div className = "display-edit" id = "edit-form-element">
-                <EditForm />
+                <EditForm hike = {displayedLocation} />
             </div>
             {/* <ScrollToButton /> */}
         </div>

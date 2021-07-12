@@ -1,9 +1,19 @@
 import {MyHikeHighlight} from "./MyHikeHighlight"
 import {MyHikesScroll} from "./MyHikesScroll"
 import { HikeLocation } from "./types"
-import { FunctionComponent } from "react"
+import { FunctionComponent, useEffect, useState } from "react"
 import { NewEntryButton } from "./NewEntryButton"
 import { ScrollTop } from "./ScrollTop"
+import { isThisTypeNode } from "typescript"
+
+let baseURL = "http://localhost:8000/api"
+
+// if (process.env.NODE_ENV === 'development') {
+//     baseURL = 'http://localhost:3003';
+// } else {
+//     // "https://morning-river-69185.herokuapp.com/" in this case is the *API* url
+//     baseURL = 'https://morning-river-69185.herokuapp.com';
+// }
 
 interface DiaryEntriesMainProps {
     locations: HikeLocation[];
@@ -13,13 +23,32 @@ interface DiaryEntriesMainProps {
 }
 
 export const DiaryEntriesMain: FunctionComponent<DiaryEntriesMainProps> = ({locations, setLocations, displayedLocation, setDisplayedLocation}) => {
+    // STATE //
+    const [diaryEntries, setDiaryEntries] = useState([])
+    const [displayedHike, setDisplayedHike] = useState({})
+
+    // HOOKS //
+    useEffect(() => {
+        getEntries()
+    }, [])
+
+    // API REQ //
+    const getEntries = () => {
+        fetch(`${baseURL}/diary_entry/`)
+            .then(data => {return data.json()}, error => console.log(error))
+            .then((diaryEntries) => {
+                setDiaryEntries(diaryEntries)
+                setDisplayedHike(diaryEntries[0])
+            })
+    }
+
     return (
         <div className = "entries-main" id = "diary-entries-main-elem">
             <h1 className = "my-hikes-title">My Hikes</h1>
             <NewEntryButton  />
             <div className = "entries-panels">
-                <MyHikeHighlight displayedLocation = {displayedLocation} locations = {locations}/>
-                <MyHikesScroll />
+                <MyHikeHighlight displayedLocation = {displayedHike} getEntries = {getEntries} />
+                <MyHikesScroll diaryEntries = {diaryEntries} setDisplayedHike = {setDisplayedHike} />
             </div>
             <ScrollTop />
         </div>

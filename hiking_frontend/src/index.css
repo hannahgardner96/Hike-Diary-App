@@ -65,6 +65,7 @@ input {
   align-items: flex-start;
   text-align: start;
   width: 45%;
+  height: 63vh;
   margin: 2%;
   padding: 1%;
   padding-right: 0;
@@ -81,6 +82,24 @@ input {
   align-items: baseline;
   width: 100%;
 }
+.map-display {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 85%;
+  border: white 1px solid;
+  height: 30vh;
+}
+.weather-display {
+  background-image:url("./media/weatherbckgrnd.png");
+  width: 80%;
+  padding: 2.5%;
+  margin-top: 3%;
+  height: 20vh;
+}
+.weather-text {
+  margin: 1%;
+}
 .recommendations-scroll {
   display: inline-flex;
   flex-direction: column;
@@ -88,7 +107,7 @@ input {
   align-items: flex-end;
   text-align: end;
   width: 45%;
-  height: 60vh;
+  height: 63vh;
   padding: 1%;
   padding-left: 0;
   margin: 2%;
@@ -97,6 +116,10 @@ input {
   background-size: cover;
   /* border: 1px solid white; */
   color: white;
+}
+.scroll-title {
+  margin-right: 6%;
+  margin-bottom: 0;
 }
 .titles-in-scroll {
   margin: 5%;
@@ -128,13 +151,6 @@ input {
 .new-button {
   margin: 2%;
   border: white solid 1px;
-}
-.map-display {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 80%;
-  border: white 1px solid;
 }
 
 /* .rec-image,*/ .map-container {
@@ -175,7 +191,7 @@ input {
   align-items: flex-start;
   text-align: start;
   width: 45%;
-  /* height: 80%; */
+  height: 63vh;
   margin: 2%;
   padding: 1%;
   padding-right: 0;
@@ -200,6 +216,16 @@ input {
 .display-new {
   display: none;
 }
+.new-entry-form, .edit-entry-form {
+  display: inline-flex;
+  flex-direction: column;
+  width: 90%
+}
+.new-form-input, .edit-form-input {
+  color: black;
+  background-color: white;
+  margin: 5%;
+}
 .display-edit {
   display: none;
 }
@@ -210,7 +236,7 @@ input {
   align-items: flex-end;
   text-align: end;
   width: 45%;
-  height: 60vh;
+  height: 63vh;
   padding: 1%;
   padding-left: 0;
   margin: 2%;
@@ -219,4 +245,23 @@ input {
   background-size: cover;
   /* border: 1px solid white; */
   color: white;
+}
+.entries-scroll {
+  margin: 5%;
+  padding-right: 5%;
+  padding-left:5%;
+  margin-right: 0;
+  overflow-y: scroll;
+}
+.hikes-in-scroll {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items:center;
+  justify-content: flex-end;
+  cursor: pointer;
+  border: white 1px solid;
+  width: 90%;
+  padding: 2%;
+  margin: 1%;
 }

@@ -1,7 +1,9 @@
-export const UserEnteredData = () => {
+export const UserEnteredData = ({hike}) => {
     return (
-        <>
-            <h6>User Data: Location, Date, Description</h6>
-        </>
+        <div className = "user-entered=data">
+            <h6>{hike.hike_name} Address: {hike.hike_address}</h6>
+            <h6>Hike Date: {hike.hike_date}</h6>
+            <h6>{hike.hike_description}</h6>
+        </div>
     )
 }

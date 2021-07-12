@@ -12,11 +12,6 @@ const barcelona: HikeLocation = {
 }
 
 export const App = () => {
-  // VARIABLES //
-  // const highlightElement = document.getElementById("highlight-element")
-  // const newFormElement = document.getElementById("new-form-element")
-  // const editFormElement = document.getElementById("edit-form-element")
-
   // STATE //
   const [locations, setLocations] = useState<HikeLocation[]>([])
   const [displayedLocation, setDisplayedLocation] = useState(barcelona)
