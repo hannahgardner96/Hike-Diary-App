@@ -1,4 +1,4 @@
-# Hike Diary Overview
+# [Hike Diary Overview](https://hike-diary-backend.herokuapp.com/index.html)
 An app that allows you to index hikes you've been on and provides recommendations based on your current location and the weather.
 ![App Preview](/readme_images/app-preview.png)
 
