@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useState } from "react"
 import { ViewHighlightButton } from "./ViewHighlightButton"
 
@@ -20,6 +21,12 @@ export const NewForm = ({getEntries, setNewHikeName, setNewHikeAddress, newHikeN
     const [hikeAddress, setHikeAddress] = useState(newHikeAddress)
     const [hikeDate, setHikeDate] = useState("")
     const [hikeDescription, setHikeDescription] = useState("")
+
+    // HOOKS //
+    useEffect(() => {
+        setHikeName(newHikeName)
+        setHikeAddress(newHikeAddress)
+    }, [newHikeName, newHikeAddress])
 
     // API REQ //
     const addHike = (e) => {
@@ -47,9 +54,9 @@ export const NewForm = ({getEntries, setNewHikeName, setNewHikeAddress, newHikeN
     }
 
     // FUNCTIONS //
-    const resetState = async () => {
-        await setNewHikeAddress("")
-        await setNewHikeName("")
+    const resetState = () => {
+        setNewHikeAddress("")
+        setNewHikeName("")
         setHikeName(hikeName)
         setHikeAddress(hikeAddress)
         setHikeDate("")

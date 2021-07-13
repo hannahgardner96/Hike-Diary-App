@@ -19,9 +19,9 @@ export const NewEntryFromRecButton = ({hikeName, hikeAddress, setNewHikeAddress,
     }
 
     return (
-        <button style = {{backgroundColor: "white"}} className = "new-button" onClick = {async() => {
-            await setNewHikeAddress(hikeAddress)
-            await setNewHikeName(hikeName)
+        <button style = {{backgroundColor: "white"}} className = "new-button" onClick = {() => {
+            setNewHikeAddress(hikeAddress)
+            setNewHikeName(hikeName)
             changeDisplays()
             scrollToHikes()
         }} >New Hike</button>
