@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'development') {
     baseURL = "http://localhost:8000/api"
 } else {
     // "https://hike-diary-backend.herokuapp.com/" in this case is the *API* url
-    baseURL = 'https://hike-diary-backend.herokuapp.com/'
+    baseURL = 'https://hike-diary-backend.herokuapp.com/api'
 }
 export const EditForm = ({hike}) => {
     // STATE //
