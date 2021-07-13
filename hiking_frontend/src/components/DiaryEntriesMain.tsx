@@ -27,9 +27,8 @@ interface DiaryEntriesMainProps {
 const barcelona = {
     hike_name: "Barcelona",
     hike_address: "Barcelona, Spain",
-    hike_lat: 41.3851,
-    hike_lng: 2.1734,
-    hike_img: undefined,
+    hike_date: "2021-06-06",
+    hike_description: "hike description"
   }  
 
 export const DiaryEntriesMain: FunctionComponent<DiaryEntriesMainProps> = ({newHikeName, newHikeAddress, setNewHikeName, setNewHikeAddress}) => {
