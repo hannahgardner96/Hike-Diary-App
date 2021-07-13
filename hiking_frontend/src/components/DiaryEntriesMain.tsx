@@ -47,7 +47,8 @@ export const DiaryEntriesMain: FunctionComponent<DiaryEntriesMainProps> = ({newH
             .then(data => {return data.json()}, error => console.log(error))
             .then((diaryEntries) => {
                 setDiaryEntries(diaryEntries)
-                setDisplayedHike(diaryEntries[0])
+                if (diaryEntries.length > 0) 
+                    setDisplayedHike(diaryEntries[0])
             })
     }
 
