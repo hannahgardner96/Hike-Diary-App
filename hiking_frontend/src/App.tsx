@@ -15,11 +15,13 @@ export const App = () => {
   // STATE //
   const [locations, setLocations] = useState<HikeLocation[]>([])
   const [displayedLocation, setDisplayedLocation] = useState(barcelona)
+  const [newHikeName, setNewHikeName] = useState("")
+  const [newHikeAddress, setNewHikeAddress] = useState("")
 
   return (
     <>
-      <RecommendationsMain  displayedLocation = {displayedLocation} setDisplayedLocation = {setDisplayedLocation} locations = {locations} setLocations = {setLocations}/>
-      <DiaryEntriesMain displayedLocation = {displayedLocation} setDisplayedLocation = {setDisplayedLocation} locations = {locations} setLocations = {setLocations} />
+      <RecommendationsMain  displayedLocation = {displayedLocation} setDisplayedLocation = {setDisplayedLocation} locations = {locations} setLocations = {setLocations} setNewHikeName = {setNewHikeName} setNewHikeAddress = {setNewHikeAddress} />
+      <DiaryEntriesMain displayedLocation = {displayedLocation} setDisplayedLocation = {setDisplayedLocation} locations = {locations} setLocations = {setLocations} newHikeName = {newHikeName} newHikeAddress = {newHikeAddress} setNewHikeName = {setNewHikeName} setNewHikeAddress = {setNewHikeAddress} />
     </>
   )
 }

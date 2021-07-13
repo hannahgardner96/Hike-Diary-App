@@ -1,15 +1,16 @@
 import {MapAPIDisplay} from "./MapAPIDisplay"
 import {WeatherDisplay} from "./WeatherDisplay"
-import {NewEntryButton} from "./NewEntryButton"
 import { HikeLocation } from "./types"
 import { FunctionComponent, useEffect, useState } from "react"
+import { NewEntryFromRecButton } from "./newEntryFromRecButton"
 
 interface RecommendationHighlightProps {
-    locations: HikeLocation[];
     displayedLocation: HikeLocation;
+    setNewHikeName: (f: string) => void;
+    setNewHikeAddress: (f: string) => void;
 }
 
-export const RecommendationHighlight: FunctionComponent<RecommendationHighlightProps> = ({locations, displayedLocation}) => {
+export const RecommendationHighlight: FunctionComponent<RecommendationHighlightProps> = ({displayedLocation, setNewHikeName, setNewHikeAddress}) => {
 
     return (
         <div className = "recommendation-highlight">
@@ -19,10 +20,13 @@ export const RecommendationHighlight: FunctionComponent<RecommendationHighlightP
                     : <h5 className = "highlight-title">Search a Location to See a Recommendation.</h5>
                 }
                 
-                <NewEntryButton />
+                <NewEntryFromRecButton hikeName = {displayedLocation.hike_name} hikeAddress = {displayedLocation.hike_address} setNewHikeName = {setNewHikeName} setNewHikeAddress = {setNewHikeAddress}  />
             </div>
-            <MapAPIDisplay location = {displayedLocation}/>
-            <WeatherDisplay lat = {displayedLocation.hike_lat} lng = {displayedLocation.hike_lng} />
+            <div className = "map-and-weather">
+                <MapAPIDisplay location = {displayedLocation}/>
+                <WeatherDisplay lat = {displayedLocation.hike_lat} lng = {displayedLocation.hike_lng} />
+            </div>
+            
         </div>
     )
 }

@@ -20,11 +20,11 @@ export const WeatherDisplay: FunctionComponent<WeatherDisplayProps> = ({lat, lng
         fetch(`https://api.openweathermap.org/data/2.5/weather?lon=${lng}&lat=${lat}&units=imperial&appid=${WEATHER_KEY}`
         )
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 return res.json()
             })
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 setCurrentWeather(res)
             })
     }
@@ -36,7 +36,7 @@ export const WeatherDisplay: FunctionComponent<WeatherDisplayProps> = ({lat, lng
 
     return (
         currentWeather.main ? <div className = "weather-display">
-            <h5>Current Weather</h5>
+            <h5 className = "weather-title">Current Weather</h5>
             <div id="icon"><img id="wicon" src={"http://openweathermap.org/img/w/" + currentWeather.weather[0].icon + ".png"} alt="Weather icon" /></div>
             <p className = "weather-text"><FaThermometerThreeQuarters /> {Math.round(currentWeather.main.temp)}: {currentWeather.weather[0].description}</p>
             <p className = "weather-text">High: {Math.round(currentWeather.main.temp_max)} Low: {Math.round(currentWeather.main.temp_min)}</p>

@@ -24,6 +24,7 @@ export const MapContainer = ({lat, lng, name, address}) => {
         <div className = "map-container">
             <LoadScript googleMapsApiKey = {KEY}>
                 <GoogleMap
+                    
                     mapContainerStyle = {mapStyle}
                     zoom = {13}
                     center = {{lat: Number(lat), lng: Number(lng)}}

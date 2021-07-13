@@ -12,10 +12,12 @@ if (process.env.NODE_ENV === 'development') {
     baseURL = 'https://hike-diary-backend.herokuapp.com/'
 }
 
-export const NewForm = ({getEntries}) => {
+export const NewForm = ({getEntries, setNewHikeName, setNewHikeAddress, newHikeName, newHikeAddress}) => {
+    // VARIABLES //
+    
     // STATE //
-    const [hikeName, setHikeName] = useState("")
-    const [hikeAddress, setHikeAddress] = useState("")
+    const [hikeName, setHikeName] = useState(newHikeName)
+    const [hikeAddress, setHikeAddress] = useState(newHikeAddress)
     const [hikeDate, setHikeDate] = useState("")
     const [hikeDescription, setHikeDescription] = useState("")
 
@@ -38,13 +40,22 @@ export const NewForm = ({getEntries}) => {
             .then(res => res.json())
             .then(() => {
                 getEntries()
-                setHikeName("")
-                setHikeAddress("")
-                setHikeDate("")
-                setHikeDescription("")
+            })
+            .then(() => {
+                resetState()
             })
     }
 
+    // FUNCTIONS //
+    const resetState = async () => {
+        await setNewHikeAddress("")
+        await setNewHikeName("")
+        setHikeName(hikeName)
+        setHikeAddress(hikeAddress)
+        setHikeDate("")
+        setHikeDescription("")
+        
+    }
     return (
         <div className = "new-entry">
             <div className = "edit-title-and-button">

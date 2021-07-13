@@ -94,7 +94,7 @@ export const LocationSearch: FunctionComponent<LocationSearchProps> = ({location
 
     return (
         <form className = "location-search" onSubmit = {getRecommendations}>
-            <input type = "text" id = "location_string" name = "location_string" onChange = {e => setLocationString(e.target.value)} placeholder = "Where are you?" value = {locationString} />
+            <input className = "location-search-input" type = "text" id = "location_string" name = "location_string" onChange = {e => setLocationString(e.target.value)} placeholder = "Where are you?" value = {locationString} />
             <input style = {{backgroundColor: "white"}} className = "search-btn" type = "submit" value = "Search"/>
         </form>
     )

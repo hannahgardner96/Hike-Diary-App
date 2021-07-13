@@ -10,6 +10,8 @@ interface RecommendationsMainProps {
     setLocations: (f: HikeLocation[]) => void;
     displayedLocation: HikeLocation;
     setDisplayedLocation: (f: HikeLocation) => void;
+    setNewHikeName: (f: string) => void;
+    setNewHikeAddress: (f: string) => void;
 }
 
 // const barcelona: HikeLocation = {
@@ -20,7 +22,7 @@ interface RecommendationsMainProps {
 //     hike_img: undefined,
 // }
 
-export const RecommendationsMain: FunctionComponent<RecommendationsMainProps> = ({locations, setLocations, displayedLocation, setDisplayedLocation}) => {
+export const RecommendationsMain: FunctionComponent<RecommendationsMainProps> = ({locations, setLocations, displayedLocation, setDisplayedLocation, setNewHikeName, setNewHikeAddress}) => {
     // STATE //
     const [nearbyLocation, setNearbyLocation] = useState("Barcelona, Spain")
 
@@ -35,8 +37,8 @@ export const RecommendationsMain: FunctionComponent<RecommendationsMainProps> = 
             {/* <p className = "cute-quote">“And into the forest I go, to lose my mind and find my soul.” — John Muir</p> */}
             <LocationSearch locations = {locations} setLocations = {setLocations} setNearbyLocation = {setNearbyLocation} />
             <div className = "recommendations-panels">
-                <RecommendationHighlight locations = {locations} displayedLocation = {displayedLocation} />
-                <RecommendationScroll locations = {locations} setDisplayedLocation = {setDisplayedLocation} nearbyLocation = {nearbyLocation} />
+                <RecommendationHighlight displayedLocation = {displayedLocation} setNewHikeName = {setNewHikeName} setNewHikeAddress = {setNewHikeAddress} />
+                <RecommendationScroll locations = {locations} setDisplayedLocation = {setDisplayedLocation} nearbyLocation = {nearbyLocation} setNewHikeName = {setNewHikeName} setNewHikeAddress = {setNewHikeAddress} />
             </div>
             <ScrollBottom />
         </div>

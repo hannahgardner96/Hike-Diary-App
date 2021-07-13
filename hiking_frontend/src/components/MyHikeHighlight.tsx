@@ -11,6 +11,10 @@ import { useEffect } from "react"
 interface MyHikeHighlightProps {
     displayedLocation: Record<string, any>;
     getEntries: (f) => void;
+    newHikeName: string;
+    newHikeAddress: string;
+    setNewHikeName: (f: string) => void;
+    setNewHikeAddress: (f: string) => void;
 }
 interface PositionObject {
     lat: number,
@@ -28,7 +32,7 @@ if (process.env.NODE_ENV === 'development') {
     baseURL = 'https://hike-diary-backend.herokuapp.com/'
 }
 
-export const MyHikeHighlight: FunctionComponent<MyHikeHighlightProps> = ({displayedLocation, getEntries}) => {
+export const MyHikeHighlight: FunctionComponent<MyHikeHighlightProps> = ({displayedLocation, getEntries, newHikeName, newHikeAddress, setNewHikeName, setNewHikeAddress}) => {
 
     // STATE //
     const [latLng, setLatLng] = useState<PositionObject | null>(null)
@@ -66,20 +70,28 @@ export const MyHikeHighlight: FunctionComponent<MyHikeHighlightProps> = ({displa
         <div className = "entry-highlight">
             {
                     latLng ? <div className = "display-highlight" id = "highlight-element">
-                    <h4>{displayedLocation.hike_name}</h4>
-                    <button onClick = {() => {
-                        changeDisplays()
-                        console.log(displayedLocation)
-                        }}>Edit</button>
-                    <UserEnteredData hike = {displayedLocation} />
-                    {/* <MapAPIDisplay location = {displayedLocation} /> */}
-                    <WeatherDisplay lat = {latLng.lat} lng = {latLng.lng} />
+                        <div className = "title-and-edit">
+                            <h4 className = "hike-highlight-title">{displayedLocation.hike_name}</h4>
+                            <div className = "edit-button">
+                               <button style = {{backgroundColor: "white", width: "30%", padding: "1%"}} onClick = {() => {
+                            changeDisplays()
+                            console.log(displayedLocation)
+                            }}>Edit</button> 
+                            </div>
+                            
+                        </div>
+                        <div className = "data-and-weather">
+                            <UserEnteredData hike = {displayedLocation} />
+                        {/* <MapAPIDisplay location = {displayedLocation} /> */}
+                            <WeatherDisplay lat = {latLng.lat} lng = {latLng.lng} />
+                        </div>
+                        
                 </div>
                 : <div className = "display-highlight" id = "highlight-element">Add a hike to view a highlight.</div>
             }
             
             <div className = "display-new" id = "new-form-element">
-                <NewForm getEntries = {getEntries} />
+                <NewForm getEntries = {getEntries} newHikeName = {newHikeName} newHikeAddress = {newHikeAddress} setNewHikeName = {setNewHikeName} setNewHikeAddress = {setNewHikeAddress} />
             </div>
             <div className = "display-edit" id = "edit-form-element">
                 <EditForm hike = {displayedLocation} />

@@ -4,7 +4,6 @@ import { HikeLocation } from "./types"
 import { FunctionComponent, useEffect, useState } from "react"
 import { NewEntryButton } from "./NewEntryButton"
 import { ScrollTop } from "./ScrollTop"
-import { isThisTypeNode } from "typescript"
 
 // let baseURL = "http://localhost:8000/api"
 
@@ -22,9 +21,13 @@ interface DiaryEntriesMainProps {
     setLocations: (f: HikeLocation[]) => void;
     displayedLocation: HikeLocation;
     setDisplayedLocation: (f: HikeLocation) => void;
+    newHikeName: string;
+    newHikeAddress: string;
+    setNewHikeName: (f: string) => void;
+    setNewHikeAddress: (f: string) => void;
 }
 
-export const DiaryEntriesMain: FunctionComponent<DiaryEntriesMainProps> = ({locations, setLocations, displayedLocation, setDisplayedLocation}) => {
+export const DiaryEntriesMain: FunctionComponent<DiaryEntriesMainProps> = ({locations, setLocations, displayedLocation, setDisplayedLocation, newHikeName, newHikeAddress, setNewHikeName, setNewHikeAddress}) => {
     // STATE //
     const [diaryEntries, setDiaryEntries] = useState([])
     const [displayedHike, setDisplayedHike] = useState({})
@@ -49,7 +52,7 @@ export const DiaryEntriesMain: FunctionComponent<DiaryEntriesMainProps> = ({loca
             <h1 className = "my-hikes-title">My Hikes</h1>
             <NewEntryButton  />
             <div className = "entries-panels">
-                <MyHikeHighlight displayedLocation = {displayedHike} getEntries = {getEntries} />
+                <MyHikeHighlight displayedLocation = {displayedHike} getEntries = {getEntries} newHikeName = {newHikeName} newHikeAddress = {newHikeAddress} setNewHikeName = {setNewHikeName} setNewHikeAddress = {setNewHikeAddress} />
                 <MyHikesScroll diaryEntries = {diaryEntries} setDisplayedHike = {setDisplayedHike} />
             </div>
             <ScrollTop />

@@ -1,4 +1,4 @@
-export const NewEntryButton = () => {
+export const NewEntryFromRecButton = ({hikeName, hikeAddress, setNewHikeAddress, setNewHikeName}) => {
     // VARIABLES //
     const highlightElement = document.getElementById("highlight-element")!
     const newFormElement = document.getElementById("new-form-element")!
@@ -19,12 +19,11 @@ export const NewEntryButton = () => {
     }
 
     return (
-        <div className = "newButton">
-            <button style = {{backgroundColor: "white", width: "30%", alignSelf: "center"}} className = "new-button" id = "new-button-entry-panel" onClick = {() => {
+        <button style = {{backgroundColor: "white"}} className = "new-button" onClick = {async() => {
+            await setNewHikeAddress(hikeAddress)
+            await setNewHikeName(hikeName)
             changeDisplays()
             scrollToHikes()
         }} >New Hike</button>
-        </div>
-        
     )
 }
