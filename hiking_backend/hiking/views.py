@@ -5,6 +5,8 @@ from .models import HikeLocation, HikeRecommendation, DiaryEntry
 import requests
 from django.conf import settings
 from django.http import HttpResponse
+from rest_framework.decorators import action
+from rest_framework import permissions
 
 class HikeLocationView(viewsets.ModelViewSet):
     serializer_class = HikeLocationSerializer

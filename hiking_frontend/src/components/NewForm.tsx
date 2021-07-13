@@ -1,14 +1,16 @@
 import { useState } from "react"
 import { ViewHighlightButton } from "./ViewHighlightButton"
 
-let baseURL = "http://localhost:8000/api"
+// let baseURL = "http://localhost:8000/api"
 
-// if (process.env.NODE_ENV === 'development') {
-//     baseURL = 'http://localhost:3003';
-// } else {
-//     // "https://morning-river-69185.herokuapp.com/" in this case is the *API* url
-//     baseURL = 'https://morning-river-69185.herokuapp.com';
-// }
+let baseURL
+
+if (process.env.NODE_ENV === 'development') {
+    baseURL = "http://localhost:8000/api"
+} else {
+    // "https://hike-diary-backend.herokuapp.com/" in this case is the *API* url
+    baseURL = 'https://hike-diary-backend.herokuapp.com/'
+}
 
 export const NewForm = ({getEntries}) => {
     // STATE //

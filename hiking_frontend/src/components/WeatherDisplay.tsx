@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react"
 import {FaThermometerThreeQuarters} from 'react-icons/fa'
 
 const WEATHER_KEY = process.env.REACT_APP_OPEN_WEATHER_MAP_KEY!
-const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY!
+// const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY!
 
 interface WeatherDisplayProps {
     lat: number,
