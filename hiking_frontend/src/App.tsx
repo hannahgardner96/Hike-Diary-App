@@ -21,7 +21,7 @@ export const App = () => {
   return (
     <>
       <RecommendationsMain  displayedLocation = {displayedLocation} setDisplayedLocation = {setDisplayedLocation} locations = {locations} setLocations = {setLocations} setNewHikeName = {setNewHikeName} setNewHikeAddress = {setNewHikeAddress} />
-      <DiaryEntriesMain displayedLocation = {displayedLocation} setDisplayedLocation = {setDisplayedLocation} locations = {locations} setLocations = {setLocations} newHikeName = {newHikeName} newHikeAddress = {newHikeAddress} setNewHikeName = {setNewHikeName} setNewHikeAddress = {setNewHikeAddress} />
+      <DiaryEntriesMain newHikeName = {newHikeName} newHikeAddress = {newHikeAddress} setNewHikeName = {setNewHikeName} setNewHikeAddress = {setNewHikeAddress} />
     </>
   )
 }

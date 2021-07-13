@@ -17,20 +17,25 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 interface DiaryEntriesMainProps {
-    locations: HikeLocation[];
-    setLocations: (f: HikeLocation[]) => void;
-    displayedLocation: HikeLocation;
-    setDisplayedLocation: (f: HikeLocation) => void;
     newHikeName: string;
     newHikeAddress: string;
     setNewHikeName: (f: string) => void;
     setNewHikeAddress: (f: string) => void;
 }
 
-export const DiaryEntriesMain: FunctionComponent<DiaryEntriesMainProps> = ({locations, setLocations, displayedLocation, setDisplayedLocation, newHikeName, newHikeAddress, setNewHikeName, setNewHikeAddress}) => {
+
+const barcelona = {
+    hike_name: "Barcelona",
+    hike_address: "Barcelona, Spain",
+    hike_lat: 41.3851,
+    hike_lng: 2.1734,
+    hike_img: undefined,
+  }  
+
+export const DiaryEntriesMain: FunctionComponent<DiaryEntriesMainProps> = ({newHikeName, newHikeAddress, setNewHikeName, setNewHikeAddress}) => {
     // STATE //
     const [diaryEntries, setDiaryEntries] = useState([])
-    const [displayedHike, setDisplayedHike] = useState({})
+    const [displayedHike, setDisplayedHike] = useState(barcelona)
 
     // HOOKS //
     useEffect(() => {
