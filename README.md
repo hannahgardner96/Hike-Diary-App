@@ -46,6 +46,7 @@ I struggled to know where to begin when de-bugging heroku deployment. Working wi
 It was interesting to understand how serializers, views, and urls came together to simplify routes and backend requests. I plan to continue my learning with ViewSets and integration of put/update and delete/destrol routes.
 
 ## Future Improvements
+* Put/Delete routes
 * Unique logins
 * Upload photos of hike
 * Responsive design
